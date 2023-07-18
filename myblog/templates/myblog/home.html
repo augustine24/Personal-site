@@ -43,9 +43,30 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;" onclick="openNav()"><i class="fa fa-bars"></i></span>
 
   <!-- Header -->
-  <header class="w3-container w3-center" style="padding:50px 30px" id="home">
-    <h1 class="w3-jumbo"><a href="https://fontmeme.com/pixel-fonts/"><img src="https://fontmeme.com/permalink/230711/d9096b29b2cb8a9f0cc117e99a0bf8b0.png" alt="pixel-fonts" height="80" width="400" margin="-75px"></a>
+  <header>
+    <style>
+        .blink {
+            font-family: Arial, sans-serif;
+            font-size: 40px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                color: white; /* white */
+            }
+            50% {
+                color: darkblue; /* darkblue */
+            }
+            100% {
+                color: blue; /* blue */
+            }
+        }
+    </style>
   </header>
+<body>
+    <div style ="text-align: center;" class="blink">AUGUSTINE KYEI</div>
+</body>
   <!-- Skill Stack Section -->
   <div class="w3-padding-32 w3-content" id="portfolio">
     <h2 class="w3-container w3-center w3-padding-small w3-blue"> Technical Competencies</h2>
@@ -84,6 +105,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
     <p>
       I've had the blessing of being able to use some of my skills with a company called goji tech to troubleshoot an API, improve it's UI, and investigate customery queries about application functionality. The experience helped me to understand in more depth the scope of building a succesful web application with a team.
     </p>
+    <p>
+      Of course, this is simply the beginning for me!
+    </p>  
     <style>
       .loading-bar {
         width: 100%;
@@ -110,7 +134,7 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       }
       
       .loading-text {
-        animation: fade 2s linear infinite;
+        animation: fade 1s linear infinite;
       }
       </style>
       </head>
