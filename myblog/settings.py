@@ -89,6 +89,17 @@ MEDIA_URL = '/media/'
 #STATIC_ROOT: specifies where exactly you yourself will put your static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '..', 'media').replace('\\','/')
 
 LOGIN_REDIRECT_URL = '/'
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'your-smtp-host'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'your-email@example.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+EMAIL_USE_TLS = True  # Use TLS for secure connection
+DEFAULT_FROM_EMAIL = 'your-email@example.com'
+CONTACT_FORM_EMAIL = 'augustinekyei16@gmail.com'  # Replace with your specific email address
