@@ -58,8 +58,12 @@ def contact_form(request):
             ['augustinekyei16@gmail.com'],  # Replace with your specific email address as the recipient
         )
 
+        return render(request, 'contact_form.html', {'success': True})
+
     else:
         form = ContactForm()
+
+    return render(request, 'contact_form.html', {'form': form})
 
 
 
