@@ -61,5 +61,5 @@ def contact_form(request):
     else:
         form = ContactForm()
 
-    return HttpResponse("Message sent successfully.")
+
 
