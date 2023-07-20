@@ -1,4 +1,7 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/02ffa68f-3dd8-4129-86a2-a137a6a0a4e5/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/AugustineKWeb",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "cSpell.words": [
+        "googleapiclient"
+    ]
 }

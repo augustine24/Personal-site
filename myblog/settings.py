@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myblog',  
+    'myblog', 
 ]
 
 MIDDLEWARE = [
@@ -98,10 +98,15 @@ LOGIN_REDIRECT_URL = '/'
 # settings.py
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'your-smtp-host'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'your-email@example.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
-EMAIL_USE_TLS = True  # Use TLS for secure connection
-DEFAULT_FROM_EMAIL = 'your-email@example.com'
-CONTACT_FORM_EMAIL = 'augustinekyei16@gmail.com'  # Replace with your specific email address
+EMAIL_HOST_USER = 'augustinekyei16@gmail.com'
+EMAIL_HOST_PASSWORD = 'ydmamusebodpfxfg'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'augustinekyei16@gmail.com'
+CONTACT_FORM_EMAIL = 'augustinekyei16@gmail.com'
+
+
+#OAuth2 Settings for google
+GOOGLE_OAUTH2_CLIENT_ID = '78767025052-cusafsmk1a0joc8r2iamdlh6rcc5c5c9.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = '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'
