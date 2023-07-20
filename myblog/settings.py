@@ -103,6 +103,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'augustinekyei16@gmail.com'
 EMAIL_HOST_PASSWORD = 'ydmamusebodpfxfg'
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'your_default_sender_email@example.com'
 
 #OAuth2 Settings for google
 GOOGLE_OAUTH2_CLIENT_ID = '78767025052-cusafsmk1a0joc8r2iamdlh6rcc5c5c9.apps.googleusercontent.com'
