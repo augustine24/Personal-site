@@ -205,7 +205,8 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </head>
 <body>
   {% if user.is_authenticated %}
-    <form id="contactForm">
+    <form id="contactForm" method="post" action="{% url 'contact_form' %}">
+        {% csrf_token %}
         <p>Lets get in touch. Send me a message:</p>
         <ul class="form-section page-section">
             <li id="cid_9" class="form-input-wide" data-type="control_head">
@@ -215,19 +216,19 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             <li class="form-line jf-required" data-type="control_textbox" id="id_8">
                 <label class="form-label form-label-top form-label-auto" id="label_8" for="input_8">Full Name<span class="form-required">*</span></label>
                 <div id="cid_8" class="form-input-wide jf-required">
-                    <input type="text" id="input_8" name="q8_fullName" data-type="input-textbox" class="form-textbox validate[required]" data-defaultvalue="" size="25" value="" placeholder=" " data-component="textbox" aria-labelledby="label_8" required="">
+                    <input type="text" id="input_8" name="full_name" data-type="input-textbox" class="form-textbox validate[required]" data-defaultvalue="" size="25" value="" placeholder=" " data-component="textbox" aria-labelledby="label_8" required="">
                 </div>
             </li>
             <li class="form-line jf-required" data-type="control_email" id="id_7">
                 <label class="form-label form-label-top form-label-auto" id="label_7" for="input_7">E-mail<span class="form-required">*</span></label>
                 <div id="cid_7" class="form-input-wide jf-required">
-                    <input type="email" id="input_7" name="q7_email" class="form-textbox validate[required, Email]" data-defaultvalue="" size="25" value="" placeholder=" " data-component="email" aria-labelledby="label_7" required="">
+                    <input type="email" id="input_7" name="email" class="form-textbox validate[required, Email]" data-defaultvalue="" size="25" value="" placeholder=" " data-component="email" aria-labelledby="label_7" required="">
                 </div>
             </li>
             <li class="form-line jf-required" data-type="control_textarea" id="id_4">
                 <label class="form-label form-label-top form-label-auto" id="label_4" for="input_4">Message<span class="form-required">*</span></label>
                 <div id="cid_4" class="form-input-wide jf-required">
-                    <textarea id="input_4" class="form-textarea validate[required]" name="q4_message4" cols="28" rows="6" data-component="textarea" required="" aria-labelledby="label_4"></textarea>
+                    <textarea id="input_4" class="form-textarea validate[required]" name="message" cols="28" rows="6" data-component="textarea" required="" aria-labelledby="label_4"></textarea>
                 </div>
             </li>
             <li class="form-line" data-type="control_button" id="id_2">
@@ -241,23 +242,14 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
               <input type="hidden" name="recipient" value="augustinekyei16@gmail.com"> 
         </ul>
     </form>
-    {% else %}
+  {% else %}
     <p>Please log in with Google to send a message:</p>
     <a href="{% url 'account_google_login' %}?process=login&scope=email">Login with Google</a>
-{% endif %}
-    <div id="successMessage" class="success-message"></div>
+  {% endif %}
+  <div id="successMessage" class="success-message"></div>
 </body>
 </html>
-
-  {% if email_sent %}
-      <div class="confirmation-message">Email sent successfully!</div>
-  {% endif %}
-  
-{% if email_sent %}
-    <div class="confirmation-message">Email sent successfully!</div>
-{% endif %}
-  <!-- End Contact Section -->
-  </div>  
+  <!-- End Contact Section --> 
   
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-center w3-opacity w3-xlarge" style="margin:-40px">

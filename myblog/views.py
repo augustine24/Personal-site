@@ -6,7 +6,8 @@ from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.core.mail import send_mail
 from django.conf import settings
-from allauth.socialaccount.models import SocialAccount
+from django.http import HttpResponse
+
 
 class HomeView(ListView):
     model = Post
@@ -42,26 +43,26 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('myblog:home')
 
 def contact_form(request):
-    if not request.user.is_authenticated:
-        return redirect('account_google_login')
-    
     if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
+        name = request.POST.get('full_name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
 
-            # Send email
-            send_mail(
-                'New Contact Form Submission',
-                f'Full Name: {name}\nEmail: {email}\nMessage: {message}',
-                settings.EMAIL_HOST_USER,
-                ['augustinekyei16@gmail.com'],  # Replace with your specific email address
-            )
+        # Send email
+        send_mail(
+            'New Contact Form Submission',
+            f'Full Name: {name}\nEmail: {email}\nMessage: {message}',
+            settings.EMAIL_HOST_USER,  # Your email address as the sender
+            ['augustinekyei16@gmail.com'],  # Replace with your specific email address as the recipient
+        )
 
-            return render(request, 'contact_form.html', {'success': True})
-    else:
-        form = ContactForm()
+        # Send email
+        send_mail(
+            'New Contact Form Submission',
+            f'Full Name: {name}\nEmail: {email}\nMessage: {message}',
+            settings.EMAIL_HOST_USER,
+            ['augustinekyei16@gmail.com'],  # Replace with your specific email address
+        )
 
-    return render(request, 'contact_form.html', {'form': form})
+        return HttpResponse("Message sent successfully.")
+
