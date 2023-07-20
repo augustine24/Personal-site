@@ -1,5 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
+from django.http import HttpResponse 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render 
@@ -52,6 +53,7 @@ def contact_form(request):
             send_mail(
                 'New Contact Form Submission',
                 f'Full Name: {full_name}\nEmail: {email}\nMessage: {message}',
+                settings.EMAIL_HOST_USER,
                 ['augustinekyei16@gmail.com'],  # Replace with your specific email address
             )
 

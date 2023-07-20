@@ -103,8 +103,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'augustinekyei16@gmail.com'
 EMAIL_HOST_PASSWORD = 'ydmamusebodpfxfg'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'augustinekyei16@gmail.com'
-CONTACT_FORM_EMAIL = 'augustinekyei16@gmail.com'
 
 
 #OAuth2 Settings for google
