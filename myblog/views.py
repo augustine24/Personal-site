@@ -44,14 +44,14 @@ def contact_form(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            full_name = form.cleaned_data['Name']
+            name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
 
             # Send email
             send_mail(
                 'New Contact Form Submission',
-                f'Full Name: {full_name}\nEmail: {email}\nMessage: {message}',
+                f'Full Name: {name}\nEmail: {email}\nMessage: {message}',
                 settings.EMAIL_HOST_USER,
                 ['augustinekyei16@gmail.com'],  # Replace with your specific email address
             )
