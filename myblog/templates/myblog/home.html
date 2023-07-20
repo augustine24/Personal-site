@@ -202,21 +202,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       }
         
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var form = document.getElementById('contactForm');
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                // Perform form submission or AJAX request here
-                // If successful, display the success message
-                var successMessage = document.getElementById('successMessage');
-                successMessage.textContent = "Message sent successfully.";
-                form.reset();
-            });
-        });
-    </script>
 </head>
 <body>
+  {% if user.is_authenticated %}
     <form id="contactForm">
         <p>Lets get in touch. Send me a message:</p>
         <ul class="form-section page-section">
@@ -250,9 +238,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
                 </div>
             </li>
             <li style="display:none">Should be Empty: <input type="text" name="website" value=""></li>
-              <input type="hidden" name="recipient" value="augustinkyei16@gmail.com"> 
+              <input type="hidden" name="recipient" value="augustinekyei16@gmail.com"> 
         </ul>
     </form>
+    {% else %}
+    <p>Please log in with Google to send a message:</p>
+    <a href="{% url 'account_google_login' %}?process=login&scope=email">Login with Google</a>
+{% endif %}
     <div id="successMessage" class="success-message"></div>
 </body>
 </html>

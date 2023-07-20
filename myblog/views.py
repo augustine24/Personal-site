@@ -2,10 +2,11 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import render 
+from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.core.mail import send_mail
 from django.conf import settings
+from allauth.socialaccount.models import SocialAccount
 
 class HomeView(ListView):
     model = Post
@@ -41,6 +42,9 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('myblog:home')
 
 def contact_form(request):
+    if not request.user.is_authenticated:
+        return redirect('account_google_login')
+    
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():

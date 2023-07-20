@@ -30,5 +30,6 @@ urlpatterns = [
     path('post/create/', views.PostCreateView.as_view(), name='post_create'),
     path('post/update/<int:pk>/', views.PostUpdateView.as_view(), name='post_update'),
     path('post/delete/<int:pk>/', views.PostDeleteView.as_view(), name='post_delete'),
+    path('contact/', views.contact_form, name='contact_form'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
