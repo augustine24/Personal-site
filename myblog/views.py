@@ -44,9 +44,11 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 
 def contact_form(request):
     if request.method == 'POST':
-        name = request.POST.get('full_name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = request.POST.get('full_name')
+            email = request.POST.get('email')
+            message = request.POST.get('message')
 
         # Send email
         send_mail(
@@ -56,13 +58,8 @@ def contact_form(request):
             ['augustinekyei16@gmail.com'],  # Replace with your specific email address as the recipient
         )
 
-        # Send email
-        send_mail(
-            'New Contact Form Submission',
-            f'Full Name: {name}\nEmail: {email}\nMessage: {message}',
-            settings.EMAIL_HOST_USER,
-            ['augustinekyei16@gmail.com'],  # Replace with your specific email address
-        )
+    else:
+        form = ContactForm()
 
-        return HttpResponse("Message sent successfully.")
+    return HttpResponse("Message sent successfully.")
 
