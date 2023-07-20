@@ -104,7 +104,6 @@ EMAIL_HOST_USER = 'augustinekyei16@gmail.com'
 EMAIL_HOST_PASSWORD = 'ydmamusebodpfxfg'
 EMAIL_USE_TLS = True
 
-
 #OAuth2 Settings for google
 GOOGLE_OAUTH2_CLIENT_ID = '78767025052-cusafsmk1a0joc8r2iamdlh6rcc5c5c9.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET = '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'
