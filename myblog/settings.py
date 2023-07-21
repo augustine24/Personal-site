@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'your_secret_key_here'
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['augustinekweb.azurewebsites.net']
 
@@ -18,8 +18,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myblog',
-    'allauth',
-    'allauth.socialaccount', 
 ]
 
 MIDDLEWARE = [
