@@ -4,7 +4,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'your_secret_key_here'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -28,7 +28,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myblog.urls' 
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'myblog.wsgi.application'  # Update with your project's WSGI application for production, comment out when not needed
+WSGI_APPLICATION = 'myblog.wsgi.application'  # Update with your project's WSGI application for production, comment out when not needed
 
 DATABASES = {
     'default': {
@@ -85,10 +85,9 @@ USE_TZ = True
 
 #STATIC_URL: specifies what to append when you call `{% static %}` as template tag. 
 STATIC_URL = '/static/'
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # settings.py
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 
@@ -109,15 +108,6 @@ EMAIL_HOST_PASSWORD = 'ydmamusebodpfxfg'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'augustinekyei16l@gmail.com'
 
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': 'YOUR_GOOGLE_CLIENT_ID',
-            'secret': 'YOUR_GOOGLE_CLIENT_SECRET',
-            'key': ''
-        }
-    },
-}
 
 #OAuth2 Settings for google
 GOOGLE_OAUTH2_CLIENT_ID = '78767025052-cusafsmk1a0joc8r2iamdlh6rcc5c5c9.apps.googleusercontent.com'

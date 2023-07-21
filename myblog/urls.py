@@ -19,15 +19,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from django.contrib import admin
-
+from .views import MyContactFormView
 
 app_name = 'myblog'
 
-urlpatterns = [
+urlpatterns =  [
     path('', views.HomeView.as_view(), name='home'),
     path('post/<int:pk>/', views.PostDetailView.as_view(), name='post_detail'),
     path('post/create/', views.PostCreateView.as_view(), name='post_create'),
     path('post/update/<int:pk>/', views.PostUpdateView.as_view(), name='post_update'),
     path('post/delete/<int:pk>/', views.PostDeleteView.as_view(), name='post_delete'),
     path('admin/', admin.site.urls),
+    path('contact/', MyContactFormView.as_view(), name='contact'),
+    path('success/', views.success_view, name='success'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

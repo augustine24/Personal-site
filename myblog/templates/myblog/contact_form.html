@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Your head content here -->
+    Form Complete
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-section">
+            <label for="{{ form.sender_name.id_for_label }}">Name:</label>
+            {{ form.sender_name }}
+            {{ form.sender_name.errors }}
+        </div>
+        <div class="form-section">
+            <label for="{{ form.sender_email.id_for_label }}">Email:</label>
+            {{ form.sender_email }}
+            {{ form.sender_email.errors }}
+        </div>
+        <div class="form-section">
+            <label for="{{ form.subject.id_for_label }}">Subject:</label>
+            {{ form.subject }}
+            {{ form.subject.errors }}
+        </div>
+        <div class="form-section">
+            <label for="{{ form.message.id_for_label }}">Message:</label>
+            {{ form.message }}
+            {{ form.message.errors }}
+        </div>
+        <div class="form-section">
+            <button type="submit">Send Email</button>
+        </div>
+    </form>
+</body>
+</html>
