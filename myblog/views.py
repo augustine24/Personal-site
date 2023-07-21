@@ -1,12 +1,15 @@
+from email.message import EmailMessage
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from myblog.forms import ContactForm
+
+from myblog.settings import EMAIL_HOST_USER
 from .models import Post
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.shortcuts import render
-from .forms import ContactForm
-from django.core.mail import send_mail
-from django.conf import settings
-
+from django.shortcuts import redirect, render
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from .settings import EMAIL_HOST_USER
 
 class HomeView(ListView):
     model = Post
@@ -41,28 +44,40 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'myblog/post_delete.html'
     success_url = reverse_lazy('myblog:home')
 
-def contact_form(request):
+def send_email(sender_name, sender_email, subject, message):
+    # Prepare the email
+    email = EmailMessage(
+        subject=subject,
+        body=message,
+        from_email=sender_email,
+        to=['test@gmail.com'],  # Replace with your recipient's email address
+        reply_to=[sender_email],
+    )
+
+    # Send the email
+    email.send()
+
+def contact_form_view(request):
+    confirmation_message = None
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            name = request.POST.get('full_name')
-            email = request.POST.get('email')
-            message = request.POST.get('message')
-
-        # Send email
-        send_mail(
-            'New Contact Form Submission',
-            f'Full Name: {name}\nEmail: {email}\nMessage: {message}',
-            settings.EMAIL_HOST_USER,  # Your email address as the sender
-            ['augustinekyei16@gmail.com'],  # Replace with your specific email address as the recipient
-        )
-
-        return render(request, 'contact_form.html', {'success': True})
-
+            confirmation_message = _extracted_from_contact_form_view_7(form)
     else:
         form = ContactForm()
 
-    return render(request, 'contact_form.html', {'form': form})
+    return render(request, 'contact_form.html', {'form': form, 'confirmation_message': confirmation_message})
 
 
+# TODO Rename this here and in `contact_form_view`
+def _extracted_from_contact_form_view_7(form):
+    sender_name = form.cleaned_data['sender_name']
+    sender_email = form.cleaned_data['sender_email']
+    subject = form.cleaned_data['subject']
+    message = form.cleaned_data['message']
 
+    # Call the function to send the email
+    send_email(sender_name, sender_email, subject, message)
+
+    return "Email sent successfully."

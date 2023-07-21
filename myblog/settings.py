@@ -6,7 +6,7 @@ SECRET_KEY = 'your_secret_key_here'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['augustinekweb.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -28,7 +28,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'myblog.urls' 
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myblog.wsgi.application'  # Update with your project's WSGI application
+#WSGI_APPLICATION = 'myblog.wsgi.application'  # Update with your project's WSGI application for production, comment out when not needed
 
 DATABASES = {
     'default': {
@@ -85,7 +85,11 @@ USE_TZ = True
 
 #STATIC_URL: specifies what to append when you call `{% static %}` as template tag. 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# settings.py
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CompressedManifestStaticFilesStorage'
+
 MEDIA_URL = '/media/'
 
 #STATIC_ROOT: specifies where exactly you yourself will put your static files
